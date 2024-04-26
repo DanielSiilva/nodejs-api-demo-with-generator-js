@@ -1,9 +1,17 @@
 const express = require("express");
-const axios = require("axios");
+const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = 4000;
+const port = 4000;
 
-app.listen(PORT, () => {
-  console.log(`Servidor-02 rodando na porta ${PORT}`);
+app.use(bodyParser.json());
+
+app.post("/receive-posts", (req, res) => {
+  console.log("Post received:", req.body);
+
+  res.send("Post received and processed");
+});
+
+app.listen(port, () => {
+  console.log(`Destination server running at http://localhost:${port}`);
 });

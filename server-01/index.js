@@ -16,6 +16,7 @@ app.get("/send-post", async (req, res) => {
   const gen = fetchDataGenerator();
 
   for await (const post of gen) {
+    //console.log(post);
     await axios.post("http://localhost:4000/receive-posts", post);
   }
 
